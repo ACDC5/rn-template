@@ -1,8 +1,6 @@
 import { extend, ResponseError } from 'umi-request';
 import { getToken } from '@/utils/auth';
-import { LoginFailureEnum } from './enums';
 
-let controller = new AbortController();
 export const initRequest = async () => {
   const token = await getToken();
 
@@ -14,7 +12,6 @@ export const initRequest = async () => {
       accessToken: token,
     },
     errorHandler,
-    signal: controller.signal,
   });
 
   // request.use(async (ctx, next) => {
@@ -30,15 +27,7 @@ export const initRequest = async () => {
 
   request.interceptors.response.use(
     response => {
-      response
-        .clone()
-        .json()
-        .then(res => {
-          if (LoginFailureEnum.失效 === res.code || LoginFailureEnum.封禁 === res.code) {
-            controller.abort();
-            controller = new AbortController();
-          }
-        });
+      response.clone().json();
       return response;
     },
     { global: false }

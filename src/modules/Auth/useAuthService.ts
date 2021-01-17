@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import * as authUtil from '@/utils/auth';
-import { makeContext } from '@/utils/contextFactory';
+import { getContextService } from '@/utils/getContextService';
 
 export interface UserInfo {
   name: string;
@@ -42,4 +42,4 @@ export default function useAuthService() {
   };
 }
 
-export const AuthService = makeContext(useAuthService);
+export const AuthService = getContextService(useAuthService);

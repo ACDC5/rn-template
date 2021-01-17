@@ -9,6 +9,6 @@ import { createContext } from 'react';
  * @param {(T | undefined)} [initialData=undefined]
  * @returns
  */
-export function makeContext<T>(_: (...args: any) => T, initialData: T | undefined = undefined) {
+export function getContextService<T>(_: (...args: any) => T, initialData: T | undefined = undefined) {
   return createContext(initialData as T);
 }
