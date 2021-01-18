@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Image } from 'react-native';
 import { Box, Button, Input, Text, WhiteSpace } from '@td-design/react-native';
-import Container from '@/common/components/Container';
-import { AuthService } from '../Auth/useAuthService';
+import Container from '@/components/Container';
+import { AuthService } from '../auth/useAuthService';
 import sentryReport, { Severity } from '@/utils/sentry';
 
 export default function Homepage() {

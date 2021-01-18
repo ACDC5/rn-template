@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { CardStyleInterpolators, StackHeaderLeftButtonProps, StackNavigationOptions } from '@react-navigation/stack';
 import { Theme, useTheme, helpers, Icon } from '@td-design/react-native';
-import { AuthService } from '@/modules/Auth/useAuthService';
+import { AuthService } from '@/modules/auth/useAuthService';
 
 import MainStack from './MainStack';
 import SignInStack from './SignInStack';

@@ -3,7 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@td-design/react-native';
 
-import useAuthService, { AuthService } from './modules/Auth/useAuthService';
+import useAuthService, { AuthService } from './modules/auth/useAuthService';
 import Stack from './stacks';
 
 const App = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
-import Homepage from '@/modules/Homepage';
+import Homepage from '@/modules/homepage';
 
 const Stack = createStackNavigator();
 const MainStack = (screenOptions: StackNavigationOptions) => {

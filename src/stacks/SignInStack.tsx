@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
-import SignIn from '@/modules/Auth/SignIn';
+import SignIn from '@/modules/auth/signIn';
 
 const Stack = createStackNavigator();
 const SignInStack = (screenOptions: StackNavigationOptions) => {
