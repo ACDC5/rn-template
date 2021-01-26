@@ -14,7 +14,7 @@ export default function Homepage() {
         <Text testID="homepage">Homepage</Text>
         <Text>hello, td-design</Text>
         <WhiteSpace />
-        <Image source={require('@/assets/certify_fail.webp')} style={{ width: 200, height: 200 }} />
+        <Image source={require('./assets/certify_fail.webp')} style={{ width: 200, height: 200 }} />
         <WhiteSpace />
         <Input placeholder="hello" />
         <WhiteSpace />

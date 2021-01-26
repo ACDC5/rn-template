@@ -1,13 +1,12 @@
 {
-  "name": "rnTemplate",
+  "name": "rn-template",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "react-native start",
     "codePush": "node scripts/codePush/index.js",
     "clean": "cd ./android && ./gradlew clean",
-    "android:release": "npm run clean && npm run jetifier && cd ./android && ./gradlew app:assembleRelease",
-    "android:staging": "npm run clean && npm run jetifier && cd ./android && ./gradlew app:assembleReleaseStaging",
+    "android:release": "npm run clean && cd ./android && ./gradlew app:assembleRelease",
     "tsc": "tsc -p ./tsconfig.json",
     "eslint": "eslint --ext .ts,.tsx src/",
     "eslint:fix": "eslint --fix --ext .ts,.tsx src/",
