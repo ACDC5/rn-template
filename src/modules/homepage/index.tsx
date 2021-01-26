@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
-import { Image } from 'react-native';
-import { Box, Button, Input, Text, WhiteSpace } from '@td-design/react-native';
-import Container from '@/components/Container';
+import { Image, ScrollView } from 'react-native';
+import { Button, Input, Text, WhiteSpace } from '@td-design/react-native';
 import { AuthService } from '../auth/useAuthService';
 import sentryReport, { Severity } from '@/utils/sentry';
+
+import Container from '@/components/Container';
+import Echarts from '@/components/Echarts';
 
 export default function Homepage() {
   const authService = useContext(AuthService);
 
   return (
     <Container>
-      <Box>
+      <ScrollView>
         <Text testID="homepage">Homepage</Text>
         <Text>hello, td-design</Text>
         <WhiteSpace />
@@ -26,7 +28,33 @@ export default function Homepage() {
         />
         <WhiteSpace />
         <Button title="退出登录" onPress={() => authService.logout()} />
-      </Box>
+        <WhiteSpace />
+        <Echarts
+          option={{
+            title: {
+              text: 'ECharts demo',
+            },
+            tooltip: {
+              show: true,
+              formatter: `$$(params) => params.name + ': ' + params.value$$`,
+            },
+            legend: {
+              data: ['销量'],
+            },
+            xAxis: {
+              data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+            },
+            yAxis: {},
+            series: [
+              {
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20],
+              },
+            ],
+          }}
+        />
+      </ScrollView>
     </Container>
   );
 }

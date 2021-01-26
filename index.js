@@ -1,9 +1,13 @@
 import 'react-native-gesture-handler';
 import { AppRegistry } from 'react-native';
+import * as Sentry from '@sentry/react-native';
+import { enableES5 } from 'immer';
+
 import { name as appName } from './app.json';
 import App from './src/App';
 import '@/api';
-import * as Sentry from '@sentry/react-native';
+
+enableES5();
 
 Sentry.init({
   dsn: 'https://0bd170cf72a04e12ac61a19ade59a909@o503055.ingest.sentry.io/5587578',
