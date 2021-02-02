@@ -5,9 +5,10 @@ import { AuthService } from '../auth/useAuthService';
 import sentryReport, { Severity } from '@/utils/sentry';
 
 import Container from '@/components/Container';
-import Echarts from '@/components/Echarts';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Homepage() {
+  const navigation = useNavigation();
   const authService = useContext(AuthService);
 
   return (
@@ -29,31 +30,7 @@ export default function Homepage() {
         <WhiteSpace />
         <Button title="退出登录" onPress={() => authService.logout()} />
         <WhiteSpace />
-        <Echarts
-          option={{
-            title: {
-              text: 'ECharts demo',
-            },
-            tooltip: {
-              show: true,
-              formatter: `$$(params) => params.name + ': ' + params.value$$`,
-            },
-            legend: {
-              data: ['销量'],
-            },
-            xAxis: {
-              data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-            },
-            yAxis: {},
-            series: [
-              {
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20],
-              },
-            ],
-          }}
-        />
+        <Button title="HotelInfo" onPress={() => navigation.navigate('HotelInfo')} />
       </ScrollView>
     </Container>
   );
