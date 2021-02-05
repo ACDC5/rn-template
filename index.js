@@ -2,12 +2,14 @@ import 'react-native-gesture-handler';
 import { AppRegistry } from 'react-native';
 import * as Sentry from '@sentry/react-native';
 import { enableES5 } from 'immer';
+import SplashScreen from 'react-native-splash-screen';
 
 import { name as appName } from './app.json';
 import App from './src/App';
-import '@/api';
+import './src/api';
 
 enableES5();
+SplashScreen.hide();
 
 Sentry.init({
   dsn: 'http://4871ac1b6eb442c997d3940e475db957@60.12.241.84:29177/4',

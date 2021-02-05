@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen; // here
 
 public class MainActivity extends ReactActivity {
 
@@ -26,6 +27,7 @@ public class MainActivity extends ReactActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
     
+    SplashScreen.show(this, true);  // here
     super.onCreate(savedInstanceState);
   }
 
