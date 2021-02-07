@@ -1,9 +1,9 @@
 ## 如何将 png 转成 webp
 
-执行 assets 下的`cwebp.sh`:
+执行 webp 目录下的`cwebp.sh`:
 
 ```code
-cd assets/
+cd webp/
 sh ./cwebp.sh
 ```
 
@@ -51,21 +51,9 @@ authService.saveUserInfo(res.userInfo);
 
 再有一点好处就是非常方便测试。UI 需要测试吗？不需要，因为没有逻辑。只需要一个 snapshot 就足够判断组件的变动是否符合预期，我们只需要测试逻辑部分。逻辑部分因为是 hooks，有专门的工具来帮助我们快速进行测试和模拟（详见`hooks`目录下的测试用例）。这样我们就可以有足够的自信保证逻辑的正确性。
 
-## 如何集成`Sentry`
+## 如何配置`Sentry`
 
-1. 安装依赖
-
-```code
-yarn add @sentry/react-native
-```
-
-2. 安装原生支持
-
-```code
-yarn sentry-wizard -i reactNative -p ios android
-```
-
-3. 修改`index.js`
+1. 修改`index.js`
 
 ```js
 import * as Sentry from '@sentry/react-native';
@@ -75,7 +63,17 @@ Sentry.init({
 });
 ```
 
-4. 验证
+2. 修改 android 和 ios 目录下的 `sentry.properties`
+
+```code
+defaults.url=http://sentry.dev.thundersdata.com/
+defaults.org=leishu
+defaults.project=你的项目名
+auth.token=你的token
+
+```
+
+3. 验证
 
 - 抛异常验证：
 
@@ -108,3 +106,28 @@ Sentry.init({
 ```
 
 _`pod install` 如果失败，请先执行`pod repo update`_
+
+## 如何配置热更新
+
+1. 查看项目的热更新 key 值，执行以下命令：
+
+```code
+appcenter codepush deployment list -a <ownerName>/<appName> -k
+```
+
+如果你还没有为你的项目创建热更新 key 值，请执行以下命令：
+
+```code
+appcenter codepush deployment add -a <ownerName>/<appName> Staging
+// 或
+appcenter codepush deployment add -a <ownerName>/<appName> Production
+```
+
+2. 修改 `android/gradle.properties`
+
+```code
+CODE_PUSH_KEY_PRODUCTION=你的项目的生产环境key值
+CODE_PUSH_KEY_STAGING=你的项目的测试环境key值
+```
+
+3. 修改`scripts/codePush/makePush.js`，替换 `thundersdata/rn-template-android` 和 `thundersdata/rn-template-ios` 为你自己的项目名
