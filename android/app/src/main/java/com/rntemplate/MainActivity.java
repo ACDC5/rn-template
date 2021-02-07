@@ -27,7 +27,7 @@ public class MainActivity extends ReactActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
     
-    SplashScreen.show(this, true);  // here
+    SplashScreen.show(this);  // here
     super.onCreate(savedInstanceState);
   }
 
